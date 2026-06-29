@@ -3,3 +3,10 @@
 *.iml
 *.log
 .DS_Store
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar

@@ -1,0 +1,46 @@
+### ==========================================
+### BadWallet System - Test HTTP Requests
+### ==========================================
+
+### badwallet-api (Port 8080)
+### ==========================================
+
+### 1. Seeder - Générer des données de test
+POST http://localhost:8080/api/wallets/seed
+Content-Type: application/json
+
+### 2. Créer un wallet
+POST http://localhost:8080/api/wallets
+Content-Type: application/json
+
+{
+    "phoneNumber": "771234567",
+    "email": "test@example.com",
+    "initialBalance": 100000,
+    "pinCode": "1234",
+    "currency": "XOF"
+}
+
+### 3. Liste paginée des wallets
+GET http://localhost:8080/api/wallets?page=0&size=10
+
+### 4. Détails d'un wallet
+GET http://localhost:8080/api/wallets/771234567
+
+### 5. Consulter le solde
+GET http://localhost:8080/api/wallets/771234567/balance
+
+### payment-service (Port 8081)
+### ==========================================
+
+### 1. Générer les factures
+POST http://localhost:8081/api/bills/generate/771234567
+
+### 2. Récupérer la facture courante
+GET http://localhost:8081/api/bills/current/771234567?provider=ISM
+
+### 3. Liste de toutes les factures
+GET http://localhost:8081/api/bills
+
+### 4. Factures par téléphone
+GET http://localhost:8081/api/bills/phone/771234567
