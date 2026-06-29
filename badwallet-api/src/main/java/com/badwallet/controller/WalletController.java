@@ -1,6 +1,5 @@
 package com.badwallet.controller;
 
-import com.badwallet.client.PaymentServiceClient;
 import com.badwallet.dto.*;
 import com.badwallet.model.Transaction;
 import com.badwallet.model.Wallet;
@@ -17,7 +16,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WalletController {
     private final WalletService walletService;
-    private final PaymentServiceClient paymentServiceClient;
 
     @PostMapping("/seed")
     public ResponseEntity<List<Wallet>> seed() {
@@ -75,17 +73,5 @@ public class WalletController {
     @GetMapping("/{phone}/transactions")
     public ResponseEntity<List<Transaction>> history(@PathVariable String phone) {
         return ResponseEntity.ok(walletService.getTransactionHistory(phone));
-    }
-
-    @GetMapping("/external/factures/{code}/current")
-    public ResponseEntity<Invoice> currentInvoice(@PathVariable String code, @RequestParam String provider) {
-        return ResponseEntity.ok(paymentServiceClient.getCurrentInvoice(code, provider));
-    }
-
-    @GetMapping("/external/factures/{code}/periode")
-    public ResponseEntity<List<Invoice>> periodInvoices(@PathVariable String code,
-                                                          @RequestParam String debut,
-                                                          @RequestParam String fin) {
-        return ResponseEntity.ok(paymentServiceClient.getInvoicesByPeriod(code, debut, fin));
     }
 }

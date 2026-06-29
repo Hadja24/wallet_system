@@ -1,10 +1,8 @@
 ### ==========================================
 ### BADWALLET SYSTEM - TEST REQUESTS
 ### ==========================================
-### badwallet-api (Port 8080) - Service A
-### ==========================================
 
-### 1. Seeder - Générer des données de test
+### 1. Seeder - Crée 10 wallets
 POST http://localhost:8080/api/wallets/seed
 Content-Type: application/json
 
@@ -20,20 +18,20 @@ Content-Type: application/json
     "currency": "XOF"
 }
 
-### 3. Liste paginée des wallets
+### 3. Récupérer la liste des wallets (COPIER UN ID ICI)
 GET http://localhost:8080/api/wallets?page=0&size=10
 Content-Type: application/json
 
-### 4. Détails d'un wallet par téléphone
+### 4. Détails d'un wallet (utilise le téléphone)
 GET http://localhost:8080/api/wallets/771234567
 Content-Type: application/json
 
-### 5. Consulter le solde
+### 5. Consulter le solde (utilise le téléphone)
 GET http://localhost:8080/api/wallets/771234567/balance
 Content-Type: application/json
 
-### 6. Dépôt - CREDIT_CARD
-POST http://localhost:8080/api/wallets/{walletId}/deposit
+### 6. Dépôt (REMETTRE L'ID COPIÉ À L'ÉTAPE 3)
+POST http://localhost:8080/api/wallets/{ID_COPIÉ}/deposit
 Content-Type: application/json
 
 {
@@ -41,118 +39,109 @@ Content-Type: application/json
     "source": "CREDIT_CARD"
 }
 
-### 7. Dépôt - WALLET_TARGET
-POST http://localhost:8080/api/wallets/{walletId}/deposit
-Content-Type: application/json
-
-{
-    "amount": 30000,
-    "source": "WALLET_TARGET"
-}
-
-### 8. Retrait (avec frais de 1% plafonnés à 5000 CFA)
+### 7. Retrait (REMETTRE L'ID COPIÉ)
 POST http://localhost:8080/api/wallets/withdraw
 Content-Type: application/json
 
 {
-    "walletId": "{walletId}",
+    "walletId": "{ID_COPIÉ}",
     "amount": 25000
 }
 
-### 9. Retrait avec frais max (montant > 500 000)
+### 8. Retrait frais max (REMETTRE L'ID COPIÉ)
 POST http://localhost:8080/api/wallets/withdraw
 Content-Type: application/json
 
 {
-    "walletId": "{walletId}",
+    "walletId": "{ID_COPIÉ}",
     "amount": 600000
 }
 
-### 10. Transfert entre wallets
+### 9. Transfert (REMETTRE L'ID COPIÉ)
 POST http://localhost:8080/api/wallets/transfer
 Content-Type: application/json
 
 {
-    "sourceWalletId": "{sourceWalletId}",
-    "targetPhoneNumber": "778765432",
+    "sourceWalletId": "{ID_COPIÉ}",
+    "targetPhoneNumber": "7700000002",
     "amount": 15000
 }
 
-### 11. Historique des transactions
+### 10. Historique des transactions (utilise le téléphone)
 GET http://localhost:8080/api/wallets/771234567/transactions
 Content-Type: application/json
 
-### 12. Paiement de facture - ISM
+### 11. Paiement ISM (REMETTRE L'ID COPIÉ)
 POST http://localhost:8080/api/wallets/pay
 Content-Type: application/json
 
 {
-    "walletId": "{walletId}",
+    "walletId": "{ID_COPIÉ}",
     "phoneNumber": "771234567",
     "provider": "ISM"
 }
 
-### 13. Paiement de facture - WOYAFAL
+### 12. Paiement WOYAFAL (REMETTRE L'ID COPIÉ)
 POST http://localhost:8080/api/wallets/pay
 Content-Type: application/json
 
 {
-    "walletId": "{walletId}",
+    "walletId": "{ID_COPIÉ}",
     "phoneNumber": "771234567",
     "provider": "WOYAFAL"
 }
 
-### 14. Paiement multiple de factures
+### 13. Paiement multiple (REMETTRE L'ID COPIÉ)
 POST http://localhost:8080/api/wallets/pay-factures
 Content-Type: application/json
 
 {
-    "walletId": "{walletId}",
+    "walletId": "{ID_COPIÉ}",
     "invoiceReferences": ["BILL-ISM-771234567-2026-June", "BILL-WOYAFAL-771234567-2026-June"]
 }
 
-### 15. Factures impayées du mois en cours - ISM
+### 14. Factures impayées ISM
 GET http://localhost:8080/api/external/factures/771234567/current?provider=ISM
 Content-Type: application/json
 
-### 16. Factures impayées du mois en cours - WOYAFAL
+### 15. Factures impayées WOYAFAL
 GET http://localhost:8080/api/external/factures/771234567/current?provider=WOYAFAL
 Content-Type: application/json
 
-### 17. Factures impayées entre deux dates
+### 16. Factures par période
 GET http://localhost:8080/api/external/factures/771234567/periode?debut=2026-01-01&fin=2026-12-31
 Content-Type: application/json
 
 
 ### ==========================================
-### payment-service (Port 8081) - Service B
+### payment-service (Port 8081)
 ### ==========================================
 
-### 1. Générer les factures pour un wallet
+### 1. Générer les factures
 POST http://localhost:8081/api/bills/generate/771234567
 Content-Type: application/json
 
-### 2. Récupérer la facture courante - ISM
+### 2. Facture courante ISM
 GET http://localhost:8081/api/bills/current/771234567?provider=ISM
 Content-Type: application/json
 
-### 3. Récupérer la facture courante - WOYAFAL
+### 3. Facture courante WOYAFAL
 GET http://localhost:8081/api/bills/current/771234567?provider=WOYAFAL
 Content-Type: application/json
 
-### 4. Récupérer les factures par période
+### 4. Factures par période
 GET http://localhost:8081/api/bills/period/771234567?startDate=2026-01-01&endDate=2026-12-31
 Content-Type: application/json
 
-### 5. Récupérer les factures par références
+### 5. Factures par références
 GET http://localhost:8081/api/bills/references?references=BILL-ISM-771234567-2026-June,BILL-WOYAFAL-771234567-2026-June
 Content-Type: application/json
 
-### 6. Marquer une facture comme payée - ISM
+### 6. Marquer ISM payée
 PUT http://localhost:8081/api/bills/BILL-ISM-771234567-2026-June/pay?transactionReference=TXN-123456
 Content-Type: application/json
 
-### 7. Marquer une facture comme payée - WOYAFAL
+### 7. Marquer WOYAFAL payée
 PUT http://localhost:8081/api/bills/BILL-WOYAFAL-771234567-2026-June/pay?transactionReference=TXN-123457
 Content-Type: application/json
 
@@ -164,7 +153,7 @@ Content-Type: application/json
 GET http://localhost:8081/api/bills/phone/771234567
 Content-Type: application/json
 
-### 10. Factures impayées par téléphone
+### 10. Factures impayées
 GET http://localhost:8081/api/bills/unpaid/771234567
 Content-Type: application/json
 
@@ -172,7 +161,7 @@ Content-Type: application/json
 GET http://localhost:8081/api/bills/BILL-ISM-771234567-2026-June
 Content-Type: application/json
 
-### 12. Créer une facture manuellement
+### 12. Créer une facture
 POST http://localhost:8081/api/bills
 Content-Type: application/json
 
@@ -185,12 +174,12 @@ Content-Type: application/json
     "description": "ISM bill for July 2026"
 }
 
-### 13. Générer les factures pour tous les wallets
+### 13. Générer pour tous
 POST http://localhost:8081/api/bills/generate/all
 Content-Type: application/json
 
 ["771234567", "778765432", "776543210"]
 
-### 14. Vérifier qu'une facture payée ne peut pas être repayée (doit retourner une erreur)
+### 14. Vérifier facture payée (doit retourner 500 ou erreur)
 PUT http://localhost:8081/api/bills/BILL-ISM-771234567-2026-May/pay?transactionReference=TXN-999999
 Content-Type: application/json

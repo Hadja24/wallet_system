@@ -1,22 +1,28 @@
 package com.payment.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDateTime;
 
 @Data
-@Document(collection = "bills")
+@Entity
+@Table(name = "bills")
 public class Bill {
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
+    
+    @Column(unique = true)
     private String reference;
+    
     private String phoneNumber;
-    private String provider; // ISM, WOYAFAL
+    private String provider;
     private Double amount;
     private String month;
     private String year;
-    private String status; // PAID, UNPAID, OVERDUE
+    private String status;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
