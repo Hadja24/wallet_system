@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadWallet - Factures</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .bill-card {
+            background: var(--card);
+            border-radius: var(--border-radius-sm);
+            padding: 16px 20px;
+            border-left: 4px solid var(--warning);
+            box-shadow: var(--shadow);
+            margin-bottom: 12px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .bill-card:hover { transform: translateX(4px); }
+        .bill-card.paid { border-left-color: var(--secondary); }
+        .bill-card .bill-info { flex: 1; }
+        .bill-card .bill-info .title { font-weight: 600; font-size: 15px; }
+        .bill-card .bill-info .sub { font-size: 13px; color: var(--text-secondary); }
+        .bill-card .bill-amount { font-size: 18px; font-weight: 700; }
+        .filter-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--background);
+            color: var(--text-secondary);
+        }
+        .filter-badge.active {
+            background: var(--primary);
+            color: white;
+        }
+        .filter-badge:hover:not(.active) { background: var(--primary-light); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo"><div class="icon">💳</div><span class="gradient-text">BADWALLET</span></div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><span class="icon">🏠</span> <span>Dashboard</span></a></li>
+                <li><a href="wallets.html"><span class="icon">👛</span> <span>Wallets</span></a></li>
+                <li><a href="transfer.html"><span class="icon">💸</span> <span>Transfer</span></a></li>
+                <li><a href="deposit.html"><span class="icon">📥</span> <span>Deposit</span></a></li>
+                <li><a href="withdraw.html"><span class="icon">📤</span> <span>Withdraw</span></a></li>
+                <li><a href="payments.html"><span class="icon">🧾</span> <span>Payments</span></a></li>
+                <li><a href="bills.html" class="active"><span class="icon">📄</span> <span>Bills <span class="badge">3</span></span></a></li>
+                <li><a href="transactions.html"><span class="icon">📊</span> <span>Transactions</span></a></li>
+                <li><a href="payment-service.html"><span class="icon">⚙️</span> <span>Payment Service</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div>
+                        <h1 class="page-title">📄 Factures</h1>
+                        <p class="page-subtitle">Gérez toutes vos factures</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box"><span>🔍</span><input type="text" placeholder="Rechercher..."></div>
+                    <button class="btn btn-secondary" onclick="window.location.href='bills-multiple.html';">📋 Paiement multiple</button>
+                    <div class="topbar-avatar">JD</div>
+                </div>
+            </header>
+
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+                <span class="filter-badge active">Toutes</span>
+                <span class="filter-badge">ISM</span>
+                <span class="filter-badge">WOYAFAL</span>
+                <span class="filter-badge">Payées</span>
+                <span class="filter-badge">Impayées</span>
+            </div>
+
+            <div class="bill-card paid">
+                <div class="bill-info">
+                    <div class="title">🏫 ISM - Scolarité Mai 2026</div>
+                    <div class="sub">Réf: BILL-ISM-771234567-2026-May</div>
+                </div>
+                <div class="bill-amount" style="color:var(--secondary);">50 000 FCFA</div>
+                <span class="status-badge active">Payé</span>
+            </div>
+
+            <div class="bill-card">
+                <div class="bill-info">
+                    <div class="title">🏫 ISM - Scolarité Juin 2026</div>
+                    <div class="sub">Réf: BILL-ISM-771234567-2026-June</div>
+                </div>
+                <div class="bill-amount" style="color:var(--danger);">50 000 FCFA</div>
+                <span class="status-badge inactive">Impayé</span>
+                <button class="btn btn-primary" style="padding:6px 16px;font-size:13px;" onclick="window.location.href='payments.html';">Payer</button>
+            </div>
+
+            <div class="bill-card paid">
+                <div class="bill-info">
+                    <div class="title">⚡ WOYAFAL - Électricité Mai 2026</div>
+                    <div class="sub">Réf: BILL-WOYAFAL-771234567-2026-May</div>
+                </div>
+                <div class="bill-amount" style="color:var(--secondary);">35 000 FCFA</div>
+                <span class="status-badge active">Payé</span>
+            </div>
+
+            <div class="bill-card">
+                <div class="bill-info">
+                    <div class="title">⚡ WOYAFAL - Électricité Juin 2026</div>
+                    <div class="sub">Réf: BILL-WOYAFAL-771234567-2026-June</div>
+                </div>
+                <div class="bill-amount" style="color:var(--danger);">35 000 FCFA</div>
+                <span class="status-badge inactive">Impayé</span>
+                <button class="btn btn-primary" style="padding:6px 16px;font-size:13px;" onclick="window.location.href='payments.html';">Payer</button>
+            </div>
+
+            <div class="bill-card paid">
+                <div class="bill-info">
+                    <div class="title">🏫 ISM - Scolarité Avril 2026</div>
+                    <div class="sub">Réf: BILL-ISM-771234567-2026-April</div>
+                </div>
+                <div class="bill-amount" style="color:var(--secondary);">50 000 FCFA</div>
+                <span class="status-badge active">Payé</span>
+            </div>
+
+            <div class="card" style="margin-top:16px;text-align:center;padding:20px;">
+                <span style="color:var(--text-secondary);font-size:14px;">Total des factures impayées: <strong style="color:var(--danger);">85 000 FCFA</strong></span>
+                <button class="btn btn-primary" style="margin-left:16px;" onclick="window.location.href='payments.html';">🧾 Payer tout</button>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.querySelectorAll('.filter-badge').forEach(el => {
+            el.addEventListener('click', function() {
+                document.querySelectorAll('.filter-badge').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

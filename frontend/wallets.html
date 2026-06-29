@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadWallet - Wallets</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo"><div class="icon">💳</div><span class="gradient-text">BADWALLET</span></div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><span class="icon">🏠</span> <span>Dashboard</span></a></li>
+                <li><a href="wallets.html" class="active"><span class="icon">👛</span> <span>Wallets</span></a></li>
+                <li><a href="transfer.html"><span class="icon">💸</span> <span>Transfer</span></a></li>
+                <li><a href="deposit.html"><span class="icon">📥</span> <span>Deposit</span></a></li>
+                <li><a href="withdraw.html"><span class="icon">📤</span> <span>Withdraw</span></a></li>
+                <li><a href="payments.html"><span class="icon">🧾</span> <span>Payments</span></a></li>
+                <li><a href="bills.html"><span class="icon">📄</span> <span>Bills <span class="badge">3</span></span></a></li>
+                <li><a href="transactions.html"><span class="icon">📊</span> <span>Transactions</span></a></li>
+                <li><a href="payment-service.html"><span class="icon">⚙️</span> <span>Payment Service</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div>
+                        <h1 class="page-title">👛 Wallet Management</h1>
+                        <p class="page-subtitle">Gérez tous vos portefeuilles</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box"><span>🔍</span><input type="text" placeholder="Rechercher..."></div>
+                    <a href="wallet-create.html" class="btn btn-primary">+ Créer un wallet</a>
+                    <div class="topbar-avatar">JD</div>
+                </div>
+            </header>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Wallet</th>
+                                <th>Téléphone</th>
+                                <th>Email</th>
+                                <th>Balance</th>
+                                <th>Devise</th>
+                                <th>Statut</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>John Doe</strong></td>
+                                <td>+221 77 123 45 67</td>
+                                <td>john@example.com</td>
+                                <td><strong>250 000 FCFA</strong></td>
+                                <td>XOF</td>
+                                <td><span class="status-badge active">Actif</span></td>
+                                <td>
+                                    <a href="wallet-detail.html" style="color:var(--primary);margin-right:8px;">👁️</a>
+                                    <a href="#" style="color:var(--warning);margin-right:8px;">✏️</a>
+                                    <a href="#" style="color:var(--danger);">🗑️</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Jane Smith</strong></td>
+                                <td>+221 78 987 65 43</td>
+                                <td>jane@example.com</td>
+                                <td><strong>180 000 FCFA</strong></td>
+                                <td>XOF</td>
+                                <td><span class="status-badge active">Actif</span></td>
+                                <td>
+                                    <a href="wallet-detail.html" style="color:var(--primary);margin-right:8px;">👁️</a>
+                                    <a href="#" style="color:var(--warning);margin-right:8px;">✏️</a>
+                                    <a href="#" style="color:var(--danger);">🗑️</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Robert Wilson</strong></td>
+                                <td>+221 76 456 78 90</td>
+                                <td>robert@example.com</td>
+                                <td><strong>75 000 FCFA</strong></td>
+                                <td>XOF</td>
+                                <td><span class="status-badge inactive">Inactif</span></td>
+                                <td>
+                                    <a href="wallet-detail.html" style="color:var(--primary);margin-right:8px;">👁️</a>
+                                    <a href="#" style="color:var(--warning);margin-right:8px;">✏️</a>
+                                    <a href="#" style="color:var(--danger);">🗑️</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marie Diop</strong></td>
+                                <td>+221 70 234 56 78</td>
+                                <td>marie@example.com</td>
+                                <td><strong>320 000 FCFA</strong></td>
+                                <td>XOF</td>
+                                <td><span class="status-badge active">Actif</span></td>
+                                <td>
+                                    <a href="wallet-detail.html" style="color:var(--primary);margin-right:8px;">👁️</a>
+                                    <a href="#" style="color:var(--warning);margin-right:8px;">✏️</a>
+                                    <a href="#" style="color:var(--danger);">🗑️</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ahmed Sy</strong></td>
+                                <td>+221 79 345 67 89</td>
+                                <td>ahmed@example.com</td>
+                                <td><strong>95 000 FCFA</strong></td>
+                                <td>XOF</td>
+                                <td><span class="status-badge pending">En attente</span></td>
+                                <td>
+                                    <a href="wallet-detail.html" style="color:var(--primary);margin-right:8px;">👁️</a>
+                                    <a href="#" style="color:var(--warning);margin-right:8px;">✏️</a>
+                                    <a href="#" style="color:var(--danger);">🗑️</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(0,0,0,0.04);">
+                    <span style="color:var(--text-secondary);font-size:14px;">Affichage 1-5 sur 245</span>
+                    <div style="display:flex;gap:8px;">
+                        <button class="btn btn-outline" style="padding:8px 16px;">‹</button>
+                        <button class="btn btn-primary" style="padding:8px 16px;">1</button>
+                        <button class="btn btn-outline" style="padding:8px 16px;">2</button>
+                        <button class="btn btn-outline" style="padding:8px 16px;">3</button>
+                        <button class="btn btn-outline" style="padding:8px 16px;">›</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

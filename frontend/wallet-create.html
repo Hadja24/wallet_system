@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadWallet - Créer un wallet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .wallet-preview {
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .wallet-preview::before {
+            content: '💳';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            font-size: 160px;
+            opacity: 0.15;
+        }
+        .wallet-preview .card-number { font-size: 22px; letter-spacing: 2px; font-weight: 600; }
+        .wallet-preview .card-holder { font-size: 14px; opacity: 0.8; }
+        .wallet-preview .card-balance { font-size: 32px; font-weight: 700; }
+        .wallet-preview .qr-code {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            position: absolute;
+            right: 32px;
+            top: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo"><div class="icon">💳</div><span class="gradient-text">BADWALLET</span></div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><span class="icon">🏠</span> <span>Dashboard</span></a></li>
+                <li><a href="wallets.html" class="active"><span class="icon">👛</span> <span>Wallets</span></a></li>
+                <li><a href="transfer.html"><span class="icon">💸</span> <span>Transfer</span></a></li>
+                <li><a href="deposit.html"><span class="icon">📥</span> <span>Deposit</span></a></li>
+                <li><a href="withdraw.html"><span class="icon">📤</span> <span>Withdraw</span></a></li>
+                <li><a href="payments.html"><span class="icon">🧾</span> <span>Payments</span></a></li>
+                <li><a href="bills.html"><span class="icon">📄</span> <span>Bills</span></a></li>
+                <li><a href="transactions.html"><span class="icon">📊</span> <span>Transactions</span></a></li>
+                <li><a href="payment-service.html"><span class="icon">⚙️</span> <span>Payment Service</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div>
+                        <h1 class="page-title">✨ Créer un wallet</h1>
+                        <p class="page-subtitle">Créez un nouveau portefeuille numérique</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-avatar">JD</div>
+                </div>
+            </header>
+
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;">
+                <div class="card">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Téléphone *</label>
+                                <input type="tel" placeholder="+221 77 123 45 67" value="+221 77 123 45 67">
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" placeholder="exemple@email.com" value="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>PIN Code *</label>
+                                <input type="password" placeholder="••••" value="1234">
+                            </div>
+                            <div class="form-group">
+                                <label>Devise</label>
+                                <select>
+                                    <option>XOF - Franc CFA</option>
+                                    <option>EUR - Euro</option>
+                                    <option>USD - Dollar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Balance initiale</label>
+                            <input type="number" placeholder="0" value="100000">
+                        </div>
+                        <div style="display:flex;gap:12px;margin-top:8px;">
+                            <button type="button" class="btn btn-outline">🔑 Générer PIN</button>
+                            <button type="submit" class="btn btn-primary" onclick="event.preventDefault(); window.location.href='wallets.html';">+ Créer le wallet</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card" style="display:flex;flex-direction:column;">
+                    <h3 style="font-size:16px;margin-bottom:16px;">👀 Aperçu</h3>
+                    <div class="wallet-preview">
+                        <div class="qr-code">📱</div>
+                        <div>
+                            <div class="card-holder">John Doe</div>
+                            <div class="card-number">•••• •••• •••• 1234</div>
+                        </div>
+                        <div>
+                            <div style="font-size:12px;opacity:0.7;">BALANCE</div>
+                            <div class="card-balance">100 000 FCFA</div>
+                        </div>
+                    </div>
+                    <div style="margin-top:16px;padding:12px;background:var(--primary-light);border-radius:12px;font-size:13px;color:var(--primary);">
+                        💡 Le PIN sera envoyé par SMS
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadWallet - Transfert</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .transfer-wallets {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        .transfer-wallets .wallet-box {
+            text-align: center;
+            padding: 20px;
+            background: var(--background);
+            border-radius: var(--border-radius-sm);
+            min-width: 120px;
+        }
+        .transfer-wallets .wallet-box .icon { font-size: 40px; display: block; }
+        .transfer-wallets .wallet-box .name { font-weight: 600; font-size: 14px; margin-top: 8px; }
+        .transfer-wallets .wallet-box .balance { font-size: 12px; color: var(--text-secondary); }
+        .transfer-arrow {
+            font-size: 40px;
+            color: var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        .transfer-summary {
+            background: var(--primary-light);
+            border-radius: var(--border-radius-sm);
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .transfer-summary .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo"><div class="icon">💳</div><span class="gradient-text">BADWALLET</span></div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><span class="icon">🏠</span> <span>Dashboard</span></a></li>
+                <li><a href="wallets.html"><span class="icon">👛</span> <span>Wallets</span></a></li>
+                <li><a href="transfer.html" class="active"><span class="icon">💸</span> <span>Transfer</span></a></li>
+                <li><a href="deposit.html"><span class="icon">📥</span> <span>Deposit</span></a></li>
+                <li><a href="withdraw.html"><span class="icon">📤</span> <span>Withdraw</span></a></li>
+                <li><a href="payments.html"><span class="icon">🧾</span> <span>Payments</span></a></li>
+                <li><a href="bills.html"><span class="icon">📄</span> <span>Bills</span></a></li>
+                <li><a href="transactions.html"><span class="icon">📊</span> <span>Transactions</span></a></li>
+                <li><a href="payment-service.html"><span class="icon">⚙️</span> <span>Payment Service</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div>
+                        <h1 class="page-title">💸 Transfert</h1>
+                        <p class="page-subtitle">Envoyez de l'argent instantanément</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-avatar">JD</div>
+                </div>
+            </header>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                <div class="card">
+                    <form>
+                        <div class="form-group">
+                            <label>Wallet source</label>
+                            <select>
+                                <option>John Doe - 250 000 FCFA</option>
+                                <option>Jane Smith - 180 000 FCFA</option>
+                                <option>Robert Wilson - 75 000 FCFA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Wallet destination</label>
+                            <input type="tel" placeholder="+221 77 123 45 67" value="+221 78 987 65 43">
+                        </div>
+                        <div class="form-group">
+                            <label>Montant *</label>
+                            <input type="number" placeholder="0" value="25000" style="font-size:24px;font-weight:600;padding:16px;" id="transferAmount" oninput="updateSummary()">
+                        </div>
+
+                        <div class="transfer-summary">
+                            <div class="row"><span>Vous envoyez</span> <strong id="sendAmount">25 000 FCFA</strong></div>
+                            <div class="row"><span style="color:var(--text-secondary);">Frais</span> <span style="color:var(--text-secondary);">0 FCFA</span></div>
+                            <div class="row" style="border-top:1px solid rgba(0,0,0,0.06);padding-top:8px;font-weight:600;">
+                                <span>Le bénéficiaire reçoit</span>
+                                <span style="color:var(--secondary);" id="receiveAmount">25 000 FCFA</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-secondary btn-block btn-lg" onclick="event.preventDefault(); window.location.href='success.html';">💸 Transférer</button>
+                    </form>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom:16px;">
+                        <div class="transfer-wallets">
+                            <div class="wallet-box">
+                                <span class="icon">👛</span>
+                                <div class="name">John Doe</div>
+                                <div class="balance">250 000 FCFA</div>
+                            </div>
+                            <span class="transfer-arrow">➜</span>
+                            <div class="wallet-box">
+                                <span class="icon">👛</span>
+                                <div class="name">Jane Smith</div>
+                                <div class="balance">180 000 FCFA</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="background:var(--gradient-primary);color:white;border:none;">
+                        <h3 style="font-size:16px;">✨ Transfert sécurisé</h3>
+                        <p style="font-size:14px;opacity:0.8;">Transfert instantané entre portefeuilles</p>
+                        <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;opacity:0.7;">
+                            <span>🔒 Chiffré</span>
+                            <span>⚡ Instantané</span>
+                            <span>🆓 Sans frais</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function updateSummary() {
+            const amount = parseInt(document.getElementById('transferAmount').value) || 0;
+            document.getElementById('sendAmount').textContent = amount.toLocaleString() + ' FCFA';
+            document.getElementById('receiveAmount').textContent = amount.toLocaleString() + ' FCFA';
+        }
+        updateSummary();
+    </script>
+</body>
+</html>

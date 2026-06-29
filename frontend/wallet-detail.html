@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadWallet - Détails du wallet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .wallet-header {
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .wallet-header .user { display: flex; align-items: center; gap: 16px; }
+        .wallet-header .user .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        .wallet-header .user .name { font-size: 22px; font-weight: 700; }
+        .wallet-header .user .phone { font-size: 14px; opacity: 0.8; }
+        .wallet-header .balance { text-align: right; }
+        .wallet-header .balance .amount { font-size: 36px; font-weight: 700; }
+        .wallet-header .balance .label { font-size: 14px; opacity: 0.7; }
+        .tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--background);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 24px;
+        }
+        .tabs .tab {
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border: none;
+            background: transparent;
+            font-family: 'Poppins', sans-serif;
+        }
+        .tabs .tab.active {
+            background: var(--card);
+            color: var(--text);
+            box-shadow: var(--shadow);
+        }
+        .tabs .tab:hover:not(.active) { background: rgba(0,0,0,0.04); }
+        .mini-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .mini-stat {
+            background: var(--background);
+            border-radius: var(--border-radius-sm);
+            padding: 16px;
+            text-align: center;
+        }
+        .mini-stat .value { font-size: 20px; font-weight: 700; }
+        .mini-stat .label { font-size: 12px; color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo"><div class="icon">💳</div><span class="gradient-text">BADWALLET</span></div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><span class="icon">🏠</span> <span>Dashboard</span></a></li>
+                <li><a href="wallets.html" class="active"><span class="icon">👛</span> <span>Wallets</span></a></li>
+                <li><a href="transfer.html"><span class="icon">💸</span> <span>Transfer</span></a></li>
+                <li><a href="deposit.html"><span class="icon">📥</span> <span>Deposit</span></a></li>
+                <li><a href="withdraw.html"><span class="icon">📤</span> <span>Withdraw</span></a></li>
+                <li><a href="payments.html"><span class="icon">🧾</span> <span>Payments</span></a></li>
+                <li><a href="bills.html"><span class="icon">📄</span> <span>Bills</span></a></li>
+                <li><a href="transactions.html"><span class="icon">📊</span> <span>Transactions</span></a></li>
+                <li><a href="payment-service.html"><span class="icon">⚙️</span> <span>Payment Service</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="wallet-header">
+                <div class="user">
+                    <div class="avatar">👤</div>
+                    <div>
+                        <div class="name">John Doe</div>
+                        <div class="phone">📱 +221 77 123 45 67</div>
+                        <div class="phone">📧 john@example.com</div>
+                    </div>
+                </div>
+                <div class="balance">
+                    <div class="label">Balance</div>
+                    <div class="amount">250 000 FCFA</div>
+                </div>
+            </div>
+
+            <div class="mini-stats">
+                <div class="mini-stat"><div class="value" style="color:var(--secondary);">85</div><div class="label">Transactions</div></div>
+                <div class="mini-stat"><div class="value" style="color:var(--primary);">12</div><div class="label">Factures</div></div>
+                <div class="mini-stat"><div class="value" style="color:var(--warning);">3</div><div class="label">Retraits</div></div>
+                <div class="mini-stat"><div class="value" style="color:var(--danger);">2</div><div class="label">Impayés</div></div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active">📊 Overview</button>
+                <button class="tab">📈 Transactions</button>
+                <button class="tab">📊 Statistics</button>
+                <button class="tab">🧾 Payments</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🕐 Timeline des transactions</span>
+                </div>
+                <div class="transaction-item">
+                    <div class="tx-icon deposit">📥</div>
+                    <div class="tx-info"><div class="tx-name">Dépôt - Carte de crédit</div><div class="tx-date">Aujourd'hui, 14:32</div></div>
+                    <div class="tx-amount positive">+50 000 FCFA</div>
+                    <span class="tx-status completed">Terminé</span>
+                </div>
+                <div class="transaction-item">
+                    <div class="tx-icon transfer">↗️</div>
+                    <div class="tx-info"><div class="tx-name">Transfert vers Jane Smith</div><div class="tx-date">Aujourd'hui, 11:15</div></div>
+                    <div class="tx-amount negative">-25 000 FCFA</div>
+                    <span class="tx-status completed">Terminé</span>
+                </div>
+                <div class="transaction-item">
+                    <div class="tx-icon payment">🧾</div>
+                    <div class="tx-info"><div class="tx-name">Paiement ISM - Scolarité</div><div class="tx-date">Hier, 09:45</div></div>
+                    <div class="tx-amount negative">-50 000 FCFA</div>
+                    <span class="tx-status completed">Terminé</span>
+                </div>
+                <div class="transaction-item">
+                    <div class="tx-icon withdraw">📤</div>
+                    <div class="tx-info"><div class="tx-name">Retrait - ATM</div><div class="tx-date">Hier, 08:20</div></div>
+                    <div class="tx-amount negative">-100 000 FCFA</div>
+                    <span class="tx-status pending">En cours</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

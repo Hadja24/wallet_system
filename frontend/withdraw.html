@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadWallet - Retrait</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .fee-calculator {
+            background: var(--background);
+            border-radius: var(--border-radius-sm);
+            padding: 20px;
+            margin: 16px 0;
+        }
+        .fee-calculator .fee-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        .fee-calculator .fee-row:last-child { border-bottom: none; }
+        .fee-calculator .fee-total {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .atm-illustration {
+            font-size: 120px;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo"><div class="icon">💳</div><span class="gradient-text">BADWALLET</span></div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><span class="icon">🏠</span> <span>Dashboard</span></a></li>
+                <li><a href="wallets.html"><span class="icon">👛</span> <span>Wallets</span></a></li>
+                <li><a href="transfer.html"><span class="icon">💸</span> <span>Transfer</span></a></li>
+                <li><a href="deposit.html"><span class="icon">📥</span> <span>Deposit</span></a></li>
+                <li><a href="withdraw.html" class="active"><span class="icon">📤</span> <span>Withdraw</span></a></li>
+                <li><a href="payments.html"><span class="icon">🧾</span> <span>Payments</span></a></li>
+                <li><a href="bills.html"><span class="icon">📄</span> <span>Bills</span></a></li>
+                <li><a href="transactions.html"><span class="icon">📊</span> <span>Transactions</span></a></li>
+                <li><a href="payment-service.html"><span class="icon">⚙️</span> <span>Payment Service</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div>
+                        <h1 class="page-title">📤 Retrait</h1>
+                        <p class="page-subtitle">Retirez vos fonds en toute sécurité</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-avatar">JD</div>
+                </div>
+            </header>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                <div class="card">
+                    <form>
+                        <div class="form-group">
+                            <label>Wallet source</label>
+                            <select>
+                                <option>John Doe - 250 000 FCFA</option>
+                                <option>Jane Smith - 180 000 FCFA</option>
+                                <option>Robert Wilson - 75 000 FCFA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Montant *</label>
+                            <input type="number" placeholder="0" value="100000" style="font-size:24px;font-weight:600;padding:16px;" id="withdrawAmount" oninput="calculateFees()">
+                        </div>
+
+                        <div class="fee-calculator">
+                            <div class="fee-row">
+                                <span>Montant</span>
+                                <span id="displayAmount">100 000 FCFA</span>
+                            </div>
+                            <div class="fee-row">
+                                <span>Frais (1% plafonné à 5 000 FCFA)</span>
+                                <span style="color:var(--warning);" id="displayFees">1 000 FCFA</span>
+                            </div>
+                            <div class="fee-row">
+                                <span style="font-weight:600;">Net à recevoir</span>
+                                <span class="fee-total" id="displayNet">99 000 FCFA</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger btn-block btn-lg" onclick="event.preventDefault(); window.location.href='success.html';">📤 Retirer</button>
+                    </form>
+                </div>
+
+                <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+                    <div class="atm-illustration">🏧</div>
+                    <h3 style="font-size:20px;">Retrait sécurisé</h3>
+                    <p style="color:var(--text-secondary);">Frais de 1% du montant, plafonnés à 5 000 FCFA</p>
+                    <div style="margin-top:16px;padding:12px 24px;background:var(--warning-light);border-radius:12px;color:var(--warning);font-weight:500;">
+                        ⚡ Plafond: 5 000 FCFA
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function calculateFees() {
+            const amount = parseInt(document.getElementById('withdrawAmount').value) || 0;
+            const fees = Math.min(amount * 0.01, 5000);
+            const net = amount - fees;
+            document.getElementById('displayAmount').textContent = amount.toLocaleString() + ' FCFA';
+            document.getElementById('displayFees').textContent = fees.toLocaleString() + ' FCFA';
+            document.getElementById('displayNet').textContent = net.toLocaleString() + ' FCFA';
+        }
+        calculateFees();
+    </script>
+</body>
+</html>

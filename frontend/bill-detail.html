@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadWallet - Détail facture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-logo"><div class="icon">💳</div><span class="gradient-text">BADWALLET</span></div>
+            <ul class="sidebar-menu">
+                <li><a href="index.html"><span class="icon">🏠</span> <span>Dashboard</span></a></li>
+                <li><a href="wallets.html"><span class="icon">👛</span> <span>Wallets</span></a></li>
+                <li><a href="transfer.html"><span class="icon">💸</span> <span>Transfer</span></a></li>
+                <li><a href="deposit.html"><span class="icon">📥</span> <span>Deposit</span></a></li>
+                <li><a href="withdraw.html"><span class="icon">📤</span> <span>Withdraw</span></a></li>
+                <li><a href="payments.html"><span class="icon">🧾</span> <span>Payments</span></a></li>
+                <li><a href="bills.html" class="active"><span class="icon">📄</span> <span>Bills</span></a></li>
+                <li><a href="transactions.html"><span class="icon">📊</span> <span>Transactions</span></a></li>
+                <li><a href="payment-service.html"><span class="icon">⚙️</span> <span>Payment Service</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div>
+                        <h1 class="page-title">📄 Détail facture</h1>
+                        <p class="page-subtitle">ISM - Scolarité Juin 2026</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-avatar">JD</div>
+                </div>
+            </header>
+
+            <div class="card" style="background:var(--gradient-primary);color:white;border:none;padding:32px;">
+                <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+                    <div>
+                        <div style="font-size:14px;opacity:0.7;">Référence</div>
+                        <div style="font-weight:600;font-size:18px;">BILL-ISM-771234567-2026-June</div>
+                        <div style="font-size:14px;opacity:0.7;margin-top:8px;">Fournisseur</div>
+                        <div style="font-weight:600;font-size:18px;">🏫 ISM</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-size:14px;opacity:0.7;">Montant</div>
+                        <div style="font-size:36px;font-weight:700;">50 000 FCFA</div>
+                        <div style="margin-top:8px;">
+                            <span class="status-badge" style="background:rgba(255,77,79,0.2);color:white;">Impayé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;">
+                <div class="card">
+                    <h3 style="font-size:16px;margin-bottom:16px;">📋 Informations</h3>
+                    <div style="display:grid;gap:12px;">
+                        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                            <span style="color:var(--text-secondary);">Wallet</span>
+                            <span>John Doe</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                            <span style="color:var(--text-secondary);">Téléphone</span>
+                            <span>+221 77 123 45 67</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                            <span style="color:var(--text-secondary);">Mois</span>
+                            <span>Juin 2026</span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                            <span style="color:var(--text-secondary);">Statut</span>
+                            <span><span class="status-badge inactive">Impayé</span></span>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;padding:8px 0;">
+                            <span style="color:var(--text-secondary);">Créée le</span>
+                            <span>01/06/2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="font-size:16px;margin-bottom:16px;">⚡ Actions</h3>
+                    <button class="btn btn-primary btn-block" onclick="window.location.href='payments.html';">💳 Payer cette facture</button>
+                    <button class="btn btn-outline btn-block" style="margin-top:12px;">📥 Télécharger le reçu</button>
+                    <button class="btn btn-danger btn-block" style="margin-top:12px;">⚠️ Signaler un problème</button>
+                    <div style="margin-top:16px;padding:12px;background:var(--warning-light);border-radius:12px;font-size:13px;color:var(--warning);">
+                        ⚡ Cette facture est en retard. Veuillez la régler rapidement.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:24px;">
+                <div class="card-header">
+                    <span class="card-title">🕐 Historique des paiements</span>
+                </div>
+                <div style="color:var(--text-secondary);text-align:center;padding:20px;font-size:14px;">
+                    Aucun paiement effectué pour cette facture
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
