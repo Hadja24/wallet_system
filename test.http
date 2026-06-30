@@ -183,3 +183,6 @@ Content-Type: application/json
 ### 14. Vérifier facture payée (doit retourner 500 ou erreur)
 PUT http://localhost:8081/api/bills/BILL-ISM-771234567-2026-May/pay?transactionReference=TXN-999999
 Content-Type: application/json
+
+GET http://localhost:8081/api/bills/phone/7700000001
+Content-Type: application/json

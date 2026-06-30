@@ -20,7 +20,10 @@ public class Bill {
     private String phoneNumber;
     private String provider;
     private Double amount;
+    
+    @Column(name = "bill_month")  // ← RENOMMER ici
     private String month;
+    
     private String year;
     private String status;
     private String description;

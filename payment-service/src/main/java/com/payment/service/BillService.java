@@ -18,6 +18,8 @@ public class BillService {
     private final BillRepository billRepository;
     private static final Double ISM_FEE = 50000.0;
     private static final Double WOYAFAL_FEE = 35000.0;
+    private static final Double SENELEC_FEE = 25000.0;  
+    private static final Double RAPIDO_FEE = 15000.0;  
 
     @Transactional
     public void generateMonthlyBills(String phoneNumber) {
@@ -29,6 +31,8 @@ public class BillService {
             
             generateBill(phoneNumber, "ISM", ISM_FEE, month, year);
             generateBill(phoneNumber, "WOYAFAL", WOYAFAL_FEE, month, year);
+            generateBill(phoneNumber, "SENELEC", SENELEC_FEE, month, year);
+            generateBill(phoneNumber, "RAPIDO", RAPIDO_FEE, month, year);
         }
     }
 

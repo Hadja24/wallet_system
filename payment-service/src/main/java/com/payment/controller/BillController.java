@@ -64,6 +64,11 @@ public class BillController {
         return ResponseEntity.ok(billService.getBillByReference(reference));
     }
 
+    @GetMapping("/unpaid/{phoneNumber}")
+    public ResponseEntity<List<Bill>> getUnpaidBills(@PathVariable String phoneNumber) {
+        return ResponseEntity.ok(billService.getUnpaidBills(phoneNumber));
+    }
+
     @PostMapping
     public ResponseEntity<Bill> create(@RequestBody BillRequest request) {
         return ResponseEntity.ok(billService.createBill(request));
